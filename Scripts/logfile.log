@@ -1,0 +1,44 @@
+INFO:root:
+
+Program started: 13:06.29 25/09/2018============================================================================
+INFO:root:6 ISBNs read from file
+ERROR:root:Message: 
+Traceback (most recent call last):
+  File "C:\Users\Steve Stanley\Documents\Computing\My_Scripts\Magpie\Scripts\musicMagpiePricer.py", line 49, in waitForCSS
+    EC.presence_of_element_located((By.CSS_SELECTOR, selector)))
+  File "C:\Users\Steve Stanley\AppData\Local\Programs\Python\Python36\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+ERROR:root:Momox timed out and is not responding
+ERROR:root:Error: <class 'selenium.common.exceptions.TimeoutException'>. Message: 
+, line: 49
+INFO:root:Run time = 43.034263134002686s, 7.172377189000447s per cycle
+INFO:root:
+Program finished, 5/6 ISBNs processed.
+INFO:root:End of Program ============================================================================
+
+INFO:root:
+
+Program started: 13:08.48 25/09/2018============================================================================
+INFO:root:6 ISBNs read from file
+ERROR:root:Message: 
+Traceback (most recent call last):
+  File "C:\Users\Steve Stanley\Documents\Computing\My_Scripts\Magpie\Scripts\musicMagpiePricer.py", line 49, in waitForCSS
+    EC.presence_of_element_located((By.CSS_SELECTOR, selector)))
+  File "C:\Users\Steve Stanley\AppData\Local\Programs\Python\Python36\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+ERROR:root:Momox timed out and is not responding
+ERROR:root:Error: <class 'selenium.common.exceptions.TimeoutException'>. Message: 
+, line: 49
+INFO:root:Timeout exception handled, invalid or unknown ISBN, book skipped
+INFO:root:Run time = 40.70600128173828s, 6.78433354695638s per cycle
+INFO:root:
+Program finished, 5/6 ISBNs processed.
+INFO:root:End of Program ============================================================================
+
+INFO:root:
+
+Program started: 17:15.52 25/09/2018============================================================================

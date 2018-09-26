@@ -1,0 +1,77 @@
+####Magpie Pricer#### Version 1.0
+
+##What it does##
+You provide it a list of ISBNs in a .txt file, one ISBN per line and Magpie pricer checks the price musicmagpie.co.uk,
+momox.co.uk and webuybooks.co.uk are offering for that ISBN. It pulls the title of the book from Momox.
+It does this by controlling a Chrome browser (invisibly).
+
+An Excel spreadsheet Results.xlsx is produced (created if it doesn't exist and added to if it does) that lists the books 
+in the same order they were given in the ISBN list along with the website that offers the best price for it.
+
+Momox.co.uk reults are in red
+webuybooks results are in green
+Music Magpie results are in blue
+Duplicate ISBNS are in yellow
+
+##How to run it##
+Double click Magpie Pricer.py
+
+--What to touch and not touch--
+Results.xlsx is for the user to view. The program appends each new batch to the end of this spreadsheet. Feel free to delete
+the spreadsheet when you're done with the information and want a clean sheet.
+Leave the .txt files in the Results folder alone (unless you need to manually adjust some wonky results). They are for
+the program to interact with.
+These contain ISBNS for each website. Running the basket loading python programs will take the ISBNs for each website and load a basket
+up in Chrome ready for sale.
+At the conclusion of the program it will ask if the results are correct y or n. Selecting y will delete the .txt file
+the ISBNs came from - resetting the program ready for new sales.
+
+ISBNToProcess.txt needs to be managed manually. If the batch completes with satisfactory results delete the ISBNs and
+load it up with the next batch.
+
+##Exceptions and error handling##
+The program outputs a logfile that should record some error information in the event of a crash. Crashes can be expected
+at some point if any of the 3 websites change the CSS codes that the program uses to identify elements. Shoot me an
+email if that happens.
+
+--Handling invalid or unknown ISBNS--
+The checks momox.co.uk first. If Momox can't take the book because the ISBN is incorrect the program won't check the other
+sites either. In other words I've told it to assume if Momox says 'ISBN not accpeted' that book will be skipped.
+A few books may pass under the radar this way, but it makes handling invalid ISBNs more reliable.
+Keep an eye on the rejects to see if this is a unacceptably high number.
+
+--Handling duplicates--
+Since momox doesn't keep a culmative basket but resets at each book request it will always accept duplicates. Webuybooks
+and musicmagpie will only accept a single copy of each book and reject all others.
+Thus if momox is offering a price for that book it will always make it through to the results.
+When the program processes a batch it checks for duplicate ISBNS in that batch. If it finds some they will be highlighted
+yellow in the results.
+The program won't search for duplicates between batches meaning the Excel sheet may contain duplicates between batches.
+The add to basket programs remove duplicate ISBNs before uploading to the website meaning no duplicates will ever be
+added to the website basket by these programs.
+
+--saving results--
+Results are saved after all ISBNs have been processed. If the program crashes before completion the results won't be saved.
+It should be able to handle duplicate and invalid ISBNs though.
+
+##Installation instructions##
+The computer requires an installation of Python 3. https://www.python.org/downloads/. It was programmed with Python 3.7
+but any version of Python 3 should work just fine.
+Python will ask during installation if python should be added to path. This needs to be enabled.
+
+After installing python you need to install some modules. Open a command window and type (or paste) the following:
+pip install openpyxl selenium
+Which will install the modules you need.
+
+Finally an installation of Google Chrome is required.
+
+The Folder layout must be as so (case sensitive):
+-[Magpie]
+ -ISBNToProcess.txt
+ -[Scripts]
+  -chromedriver.exe
+  -musicMagpiePricer.py
+  -fillMagpieBasket.py
+  -fillMomoxBasket.py
+  -fillWebuybooksBasket.py
+ -[Results]
